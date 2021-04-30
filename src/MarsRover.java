@@ -1,81 +1,77 @@
-import java.util.Scanner;
-
 public class MarsRover {
 
-    public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        System.out.println("Insert horizontal map size:");
-        int sizex = reader.nextInt();
-        System.out.println("Insert vertical map size:");
-        int sizey = reader.nextInt();
+    public static void main(String[] args) throws Exception {
 
-        System.out.println("Insert horizontal initial rover position:");
-        int roverx = reader.nextInt();
-        System.out.println("Insert vertical initial rover position:");
-        int rovery = reader.nextInt();
-        System.out.println("Insert initial rover direction:");
-        String roverz = reader.next(); //n = north, e = east, w = west, s = south
+        int sizeH = UserInteraction.readNumber(Message.HORIZONTAL_SIZE.getMessage());
+        int sizeV = UserInteraction.readNumber(Message.VERTICAL_SIZE.getMessage());
+
+        Mars mars = new Mars(sizeH, sizeV);
+
+        int roverX = UserInteraction.readNumber(Message.POSITION_X.getMessage());
+        int roverY = UserInteraction.readNumber(Message.POSITION_Y.getMessage());
+        String roverDirection = UserInteraction.readText(Message.DIRECTION.getMessage());
+
+        Rover rover = new Rover(roverX, roverY, roverDirection);
 
         do {
-            System.out.println("Insert command (f = forward, b = backward, l = turn left, r = turn right):");
-            String command = reader.next();
+            String command = UserInteraction.readText(Message.COMMAND.getMessage());
             if (command.equals("f")) {
-                if (roverz.equals("n")) {
-                    rovery += 1;
+                if (roverDirection.equals("n")) {
+                    roverY += 1;
                 }
-                if (roverz.equals("w")) {
-                    roverx -= 1;
+                if (roverDirection.equals("w")) {
+                    roverX -= 1;
                 }
-                if (roverz.equals("s")) {
-                    rovery -= 1;
+                if (roverDirection.equals("s")) {
+                    roverY -= 1;
                 }
-                if (roverz.equals("e")) {
-                    roverx += 1;
+                if (roverDirection.equals("e")) {
+                    roverX += 1;
                 }
             }
             if (command.equals("b")) {
-                if (roverz.equals("n")) {
-                    rovery -= 1;
+                if (roverDirection.equals("n")) {
+                    roverY -= 1;
                 }
-                if (roverz.equals("w")) {
-                    roverx += 1;
+                if (roverDirection.equals("w")) {
+                    roverX += 1;
                 }
-                if (roverz.equals("s")) {
-                    rovery += 1;
+                if (roverDirection.equals("s")) {
+                    roverY += 1;
                 }
-                if (roverz.equals("e")) {
-                    roverx -= 1;
+                if (roverDirection.equals("e")) {
+                    roverX -= 1;
                 }
             }
             if (command.equals("l")) {
-                if (roverz.equals("n")) {
-                    roverz = "w";
+                if (roverDirection.equals("n")) {
+                    roverDirection = "w";
                 }
-                if (roverz.equals("w")) {
-                    roverz = "s";
+                if (roverDirection.equals("w")) {
+                    roverDirection = "s";
                 }
-                if (roverz.equals("s")) {
-                    roverz = "e";
+                if (roverDirection.equals("s")) {
+                    roverDirection = "e";
                 }
-                if (roverz.equals("e")) {
-                    roverz = "n";
+                if (roverDirection.equals("e")) {
+                    roverDirection = "n";
                 }
             }
             if (command.equals("r")) {
-                if (roverz.equals("n")) {
-                    roverz = "e";
+                if (roverDirection.equals("n")) {
+                    roverDirection = "e";
                 }
-                if (roverz.equals("e")) {
-                    roverz = "s";
+                if (roverDirection.equals("e")) {
+                    roverDirection = "s";
                 }
-                if (roverz.equals("s")) {
-                    roverz = "w";
+                if (roverDirection.equals("s")) {
+                    roverDirection = "w";
                 }
-                if (roverz.equals("w")) {
-                    roverz = "n";
+                if (roverDirection.equals("w")) {
+                    roverDirection = "n";
                 }
             }
-            System.out.println(String.format("Rover is at x:%d y:%d facing:%s", roverx, rovery, roverz));
+            System.out.printf("Rover is at x:%d y:%d facing:%s%n", roverX, roverY, roverDirection);
         } while (true);
     }
 }

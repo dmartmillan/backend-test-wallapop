@@ -1,20 +1,25 @@
+package main.command;
+
 public class MarsRover {
 
     public static void main(String[] args) throws Exception {
 
-        int sizeH = UserInteraction.readNumber(Message.HORIZONTAL_SIZE.getMessage());
-        int sizeV = UserInteraction.readNumber(Message.VERTICAL_SIZE.getMessage());
+        int sizeH = UserInteraction.readNumber(EnumMessage.HORIZONTAL_SIZE.getMessage());
+        int sizeV = UserInteraction.readNumber(EnumMessage.VERTICAL_SIZE.getMessage());
 
         Mars mars = new Mars(sizeH, sizeV);
 
-        int roverX = UserInteraction.readNumber(Message.POSITION_X.getMessage());
-        int roverY = UserInteraction.readNumber(Message.POSITION_Y.getMessage());
-        String roverDirection = UserInteraction.readText(Message.DIRECTION.getMessage());
+        int roverX = UserInteraction.readNumber(EnumMessage.POSITION_X.getMessage());
+        int roverY = UserInteraction.readNumber(EnumMessage.POSITION_Y.getMessage());
+        String roverDirection = UserInteraction.readText(EnumMessage.DIRECTION.getMessage());
 
-        Rover rover = new Rover(roverX, roverY, roverDirection);
+        Rover rover = new Rover(mars, roverX, roverY, roverDirection);
 
         do {
-            String command = UserInteraction.readText(Message.COMMAND.getMessage());
+            String command = UserInteraction.readText(EnumMessage.COMMAND.getMessage());
+
+            rover.executeCommand(command);
+
             if (command.equals("f")) {
                 if (roverDirection.equals("n")) {
                     roverY += 1;

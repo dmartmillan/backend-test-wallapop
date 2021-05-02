@@ -1,3 +1,5 @@
+package main.command;
+
 import java.util.Scanner;
 
 public class UserInteraction {
@@ -19,27 +21,27 @@ public class UserInteraction {
     }
 
     public static int readHorizontalSize() throws Exception {
-        System.out.println(Message.HORIZONTAL_SIZE.getMessage());
+        System.out.println(EnumMessage.HORIZONTAL_SIZE.getMessage());
         return reader.nextInt();
     }
 
     static public int readVerticalSize() throws Exception {
-        System.out.println(Message.VERTICAL_SIZE.getMessage());
+        System.out.println(EnumMessage.VERTICAL_SIZE.getMessage());
         return reader.nextInt();
     }
 
     public static int readPositionX() throws Exception {
-        System.out.println(Message.POSITION_X.getMessage());
+        System.out.println(EnumMessage.POSITION_X.getMessage());
         return reader.nextInt();
     }
 
     public static int readPositionY() throws Exception {
-        System.out.println(Message.POSITION_Y.getMessage());
+        System.out.println(EnumMessage.POSITION_Y.getMessage());
         return reader.nextInt();
     }
 
     public static String readDirection() throws Exception {
-        System.out.println(Message.DIRECTION.getMessage());
+        System.out.println(EnumMessage.DIRECTION.getMessage());
         return reader.next(); //n = north, e = east, w = west, s = south
     }
 }

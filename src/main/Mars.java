@@ -1,3 +1,5 @@
+package main.command;
+
 class Mars {
     private int sizeHorizontal;
     private int sizeVertical;

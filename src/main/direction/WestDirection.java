@@ -2,15 +2,15 @@ package main.direction;
 
 import main.Rover;
 
-public class West implements Direction{
+public class WestDirection implements Direction{
     @Override
     public Direction turnRight() {
-        return new North();
+        return new NorthDirection();
     }
 
     @Override
     public Direction turnLeft() {
-        return new South();
+        return new SouthDirection();
     }
 
     @Override

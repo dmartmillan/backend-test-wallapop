@@ -1,10 +1,10 @@
 package main.command;
 
 public enum EnumCommand {
-    F(new MoveForward()),
-    B(new MoveBackward()),
-    L(new TurnLeft()),
-    R(new TurnRight());
+    F(new MoveForwardCommand()),
+    B(new MoveBackwardCommand()),
+    L(new TurnLeftCommand()),
+    R(new TurnRightCommand());
 
     private final Command command;
 

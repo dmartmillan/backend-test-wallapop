@@ -1,10 +1,10 @@
 package main.direction;
 
 public enum EnumDirection {
-    N(new North()),
-    S(new South()),
-    W(new West()),
-    E(new East());
+    N(new NorthDirection()),
+    S(new SouthDirection()),
+    W(new WestDirection()),
+    E(new EastDirection());
 
     private final Direction direction;
 

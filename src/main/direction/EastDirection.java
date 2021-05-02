@@ -2,24 +2,24 @@ package main.direction;
 
 import main.Rover;
 
-public class North implements Direction {
+public class EastDirection implements Direction{
     @Override
     public Direction turnRight() {
-        return new East();
+        return new SouthDirection();
     }
 
     @Override
     public Direction turnLeft() {
-        return new West();
+        return new NorthDirection();
     }
 
     @Override
     public void moveForward(Rover rover) {
-        rover.setCoordinateY(rover.getCoordinateY() + 1);
+        rover.setCoordinateX(rover.getCoordinateX() + 1);
     }
 
     @Override
     public void moveBackward(Rover rover) {
-        rover.setCoordinateY(rover.getCoordinateY() - 1);
+        rover.setCoordinateX(rover.getCoordinateX() - 1);
     }
 }

@@ -2,9 +2,9 @@ package main.command;
 
 import main.Rover;
 
-public class MoveForward implements Command {
+public class TurnLeftCommand implements Command {
     @Override
     public void execute(Rover rover) {
-        rover.moveForward();
+        rover.turnLeft();
     }
 }

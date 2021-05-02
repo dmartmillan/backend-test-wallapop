@@ -6,7 +6,7 @@ public enum EnumMessage {
     POSITION_X("Insert horizontal initial rover position:"),
     POSITION_Y("Insert vertical initial rover position:"),
     DIRECTION("Insert initial rover direction:"),
-    COMMAND("Insert main.command (f = forward, b = backward, l = turn left, r = turn right):");
+    COMMAND("Insert command (f = forward, b = backward, l = turn left, r = turn right):");
 
     private final String message;
 

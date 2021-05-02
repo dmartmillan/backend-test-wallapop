@@ -1,5 +1,7 @@
 package main.command;
 
+import main.Rover;
+
 public interface Command {
-    public abstract void execute(Rover rover);
+    void execute(Rover rover);
 }

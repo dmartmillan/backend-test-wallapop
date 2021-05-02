@@ -1,4 +1,4 @@
-package main.command;
+package main.interaction;
 
 public enum EnumMessage {
     HORIZONTAL_SIZE("Insert horizontal map size:"),

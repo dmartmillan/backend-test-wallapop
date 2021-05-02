@@ -1,16 +1,64 @@
-package main.command;
+package main;
+
+import main.direction.Direction;
+import main.interaction.UserInteraction;
+import main.command.Command;
 
 public class Rover {
 
     private Mars planet;
-    private int roverX;
-    private int roverY;
-    private String roverDirection;
+    private int coordinateX;
+    private int coordinateY;
+    private Direction roverDirection;
 
-    public Rover(Mars planet,int roverX, int roverY, String roverDirection) {
+    public Rover(Mars planet, int coordinateX, int coordinateY, Direction roverDirection) {
         this.planet = planet;
-        this.roverX = roverX;
-        this.roverY = roverY;
+        this.coordinateX = coordinateX;
+        this.coordinateY = coordinateY;
         this.roverDirection = roverDirection;
+    }
+
+    public int getCoordinateX() {
+        return this.coordinateX;
+    }
+
+    public int getCoordinateY() {
+        return this.coordinateY;
+    }
+
+    public Direction getRoverDirection() {
+        return roverDirection;
+    }
+
+    public void setCoordinateX(int coordinateX) {
+        this.coordinateX = coordinateX;
+    }
+
+    public void setCoordinateY(int coordinateY) {
+        this.coordinateY = coordinateY;
+    }
+
+    public void executeCommand(Command command) {
+        command.execute(this);
+    }
+
+    public void moveForward() {
+        getRoverDirection().moveForward(this);
+    }
+
+    public void moveBackward() {
+        getRoverDirection().moveBackward(this);
+    }
+
+    public void turnLeft() {
+        this.roverDirection = getRoverDirection().turnLeft();
+    }
+
+    public void turnRight() {
+        this.roverDirection = getRoverDirection().turnRight();
+    }
+
+    public void writePosition() {
+        UserInteraction.writePosition(this.coordinateX, this.coordinateY, this.roverDirection.getClass().getSimpleName().toLowerCase().charAt(0));
     }
 }

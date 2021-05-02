@@ -1,4 +1,11 @@
-package main.command;
+package main;
+
+import main.direction.Direction;
+import main.direction.EnumDirection;
+import main.interaction.EnumMessage;
+import main.interaction.UserInteraction;
+import main.command.Command;
+import main.command.EnumCommand;
 
 public class MarsRover {
 
@@ -12,71 +19,17 @@ public class MarsRover {
         int roverX = UserInteraction.readNumber(EnumMessage.POSITION_X.getMessage());
         int roverY = UserInteraction.readNumber(EnumMessage.POSITION_Y.getMessage());
         String roverDirection = UserInteraction.readText(EnumMessage.DIRECTION.getMessage());
+        Direction direction = EnumDirection.valueOf(roverDirection.toUpperCase()).getDirection();
 
-        Rover rover = new Rover(mars, roverX, roverY, roverDirection);
+        Rover rover = new Rover(mars, roverX, roverY, direction);
 
         do {
             String command = UserInteraction.readText(EnumMessage.COMMAND.getMessage());
+            Command commandToExecute = EnumCommand.valueOf(command.toUpperCase()).getCommand();
 
-            rover.executeCommand(command);
+            rover.executeCommand(commandToExecute);
 
-            if (command.equals("f")) {
-                if (roverDirection.equals("n")) {
-                    roverY += 1;
-                }
-                if (roverDirection.equals("w")) {
-                    roverX -= 1;
-                }
-                if (roverDirection.equals("s")) {
-                    roverY -= 1;
-                }
-                if (roverDirection.equals("e")) {
-                    roverX += 1;
-                }
-            }
-            if (command.equals("b")) {
-                if (roverDirection.equals("n")) {
-                    roverY -= 1;
-                }
-                if (roverDirection.equals("w")) {
-                    roverX += 1;
-                }
-                if (roverDirection.equals("s")) {
-                    roverY += 1;
-                }
-                if (roverDirection.equals("e")) {
-                    roverX -= 1;
-                }
-            }
-            if (command.equals("l")) {
-                if (roverDirection.equals("n")) {
-                    roverDirection = "w";
-                }
-                if (roverDirection.equals("w")) {
-                    roverDirection = "s";
-                }
-                if (roverDirection.equals("s")) {
-                    roverDirection = "e";
-                }
-                if (roverDirection.equals("e")) {
-                    roverDirection = "n";
-                }
-            }
-            if (command.equals("r")) {
-                if (roverDirection.equals("n")) {
-                    roverDirection = "e";
-                }
-                if (roverDirection.equals("e")) {
-                    roverDirection = "s";
-                }
-                if (roverDirection.equals("s")) {
-                    roverDirection = "w";
-                }
-                if (roverDirection.equals("w")) {
-                    roverDirection = "n";
-                }
-            }
-            System.out.printf("Rover is at x:%d y:%d facing:%s%n", roverX, roverY, roverDirection);
+            rover.writePosition();
         } while (true);
     }
 }

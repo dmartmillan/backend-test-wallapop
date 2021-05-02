@@ -1,4 +1,4 @@
-package main.command;
+package main;
 
 class Mars {
     private int sizeHorizontal;

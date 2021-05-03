@@ -1,4 +1,4 @@
-package main.interaction;
+package marsrover.interaction;
 
 public enum EnumMessage {
     HORIZONTAL_SIZE("Insert horizontal map size:"),

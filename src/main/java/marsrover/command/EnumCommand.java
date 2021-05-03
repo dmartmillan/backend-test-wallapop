@@ -1,4 +1,4 @@
-package main.command;
+package marsrover.command;
 
 public enum EnumCommand {
     F(new MoveForwardCommand()),

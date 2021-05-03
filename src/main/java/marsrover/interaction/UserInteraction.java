@@ -1,13 +1,9 @@
-package main.interaction;
+package marsrover.interaction;
 import java.util.Scanner;
 
 public class UserInteraction {
 
     private static final Scanner reader = new Scanner(System.in);
-
-    /*static void checkNonNegative(int input) throws Exception {
-        if (input <= 0) throw new Exception();
-    }*/
 
     public static int readNumber(String message) {
         if (message != null && !message.equals("")) System.out.println(message);

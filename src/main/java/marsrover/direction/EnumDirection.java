@@ -1,4 +1,4 @@
-package main.direction;
+package marsrover.direction;
 
 public enum EnumDirection {
     N(new NorthDirection()),

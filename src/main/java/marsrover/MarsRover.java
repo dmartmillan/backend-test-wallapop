@@ -1,11 +1,11 @@
-package main;
+package marsrover;
 
-import main.direction.Direction;
-import main.direction.EnumDirection;
-import main.interaction.EnumMessage;
-import main.interaction.UserInteraction;
-import main.command.Command;
-import main.command.EnumCommand;
+import marsrover.command.Command;
+import marsrover.command.EnumCommand;
+import marsrover.direction.Direction;
+import marsrover.direction.EnumDirection;
+import marsrover.interaction.EnumMessage;
+import marsrover.interaction.UserInteraction;
 
 public class MarsRover {
 

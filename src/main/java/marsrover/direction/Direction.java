@@ -1,6 +1,6 @@
-package main.direction;
+package marsrover.direction;
 
-import main.Rover;
+import marsrover.Rover;
 
 public interface Direction {
     Direction turnRight();

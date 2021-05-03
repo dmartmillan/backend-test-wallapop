@@ -1,6 +1,6 @@
-package main;
+package marsrover;
 
-class Mars {
+public class Mars {
     private int sizeHorizontal;
     private int sizeVertical;
 

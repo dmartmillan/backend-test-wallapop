@@ -1,6 +1,6 @@
-package main.command;
+package marsrover.command;
 
-import main.Rover;
+import marsrover.Rover;
 
 public class MoveForwardCommand implements Command {
     @Override

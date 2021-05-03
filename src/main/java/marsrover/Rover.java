@@ -1,8 +1,8 @@
-package main;
+package marsrover;
 
-import main.direction.Direction;
-import main.interaction.UserInteraction;
-import main.command.Command;
+import marsrover.command.Command;
+import marsrover.direction.Direction;
+import marsrover.interaction.UserInteraction;
 
 public class Rover {
 

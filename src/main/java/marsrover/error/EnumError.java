@@ -1,7 +1,8 @@
 package marsrover.error;
 
 public enum EnumError {
-    MAP_SIZE("Wrong map size")
+    MAP_SIZE("Wrong map size"),
+    POSITION("Wrong position")
     ;
 
     private final String error;

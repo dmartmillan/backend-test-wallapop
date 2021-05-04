@@ -15,7 +15,7 @@ public class UserInteraction {
         return reader.next(); //n = north, e = east, w = west, s = south
     }
 
-    public static void writePosition(int coordinateX, int coordinateY, char direction) {
-        System.out.printf("Rover is at x:%d y:%d facing:%s%n", coordinateX, coordinateY, direction);
+    public static void writePosition(String position) {
+        System.out.println(position);
     }
 }

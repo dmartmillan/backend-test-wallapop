@@ -2,7 +2,7 @@ package marsrover;
 
 import marsrover.command.Command;
 import marsrover.direction.Direction;
-import marsrover.interaction.UserInteraction;
+import marsrover.error.EnumError;
 
 public class Rover {
 
@@ -16,6 +16,8 @@ public class Rover {
         this.coordinateX = coordinateX;
         this.coordinateY = coordinateY;
         this.roverDirection = roverDirection;
+
+        this.validatePosition();
     }
 
     public int getCoordinateX() {
@@ -58,7 +60,16 @@ public class Rover {
         this.roverDirection = getRoverDirection().turnRight();
     }
 
-    public void writePosition() {
-        UserInteraction.writePosition(this.coordinateX, this.coordinateY, this.roverDirection.getClass().getSimpleName().toLowerCase().charAt(0));
+    @Override
+    public String toString() {
+        return "Rover is at x:" + this.coordinateX + " y:" + this.coordinateY + " facing:" +
+                this.roverDirection.getClass().getSimpleName().toLowerCase().charAt(0);
+    }
+
+    private void validatePosition() {
+        if (coordinateX > planet.getSizeHorizontal() || coordinateY > planet.getSizeVertical()
+                || coordinateY < 0 || coordinateX < 0) {
+            throw new IllegalArgumentException(EnumError.POSITION.getError());
+        }
     }
 }

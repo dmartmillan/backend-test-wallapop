@@ -29,7 +29,7 @@ public class MarsRover {
 
             rover.executeCommand(commandToExecute);
 
-            rover.writePosition();
+            UserInteraction.writePosition(rover.toString());
         } while (true);
     }
 }

@@ -1,3 +1,5 @@
+package marsrovertest;
+
 import marsrover.Rover;
 import marsrover.command.Command;
 import marsrover.direction.Direction;

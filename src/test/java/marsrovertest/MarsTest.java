@@ -1,3 +1,5 @@
+package marsrovertest;
+
 import marsrover.Mars;
 import marsrover.error.EnumError;
 import org.junit.Test;

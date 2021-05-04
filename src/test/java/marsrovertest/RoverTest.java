@@ -1,3 +1,5 @@
+package marsrovertest;
+
 import marsrover.Mars;
 import marsrover.Rover;
 import marsrover.direction.Direction;
@@ -5,6 +7,7 @@ import marsrover.direction.EastDirection;
 import marsrover.direction.NorthDirection;
 import marsrover.direction.WestDirection;
 import marsrover.error.EnumError;
+import marsrovertest.BaseTest;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -2,9 +2,9 @@ package marsrovertest.direction;
 
 import marsrover.Mars;
 import marsrover.Rover;
-import marsrover.direction.EastDirection;
 import marsrover.direction.NorthDirection;
 import marsrover.direction.SouthDirection;
+import marsrover.direction.WestDirection;
 import marsrovertest.BaseTest;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class WestDirectionTest extends BaseTest {
     @Before
     public void setUp() {
         mars = new Mars(sizeH, sizeV);
-        direction = new EastDirection();
+        direction = new WestDirection();
         rover = new Rover(mars, coordinateX, coordinateY, direction);
     }
 

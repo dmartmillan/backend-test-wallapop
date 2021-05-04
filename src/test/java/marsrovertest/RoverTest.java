@@ -89,4 +89,38 @@ public class RoverTest extends BaseTest {
         assertEquals("Rover is at x:" + coordinateX + " y:" + coordinateY + " facing:" +
                 direction.getClass().getSimpleName().toLowerCase().charAt(0), position);
     }
+
+    @Test
+    public void tourVerticalMarsWhenRoversIsOverEdgeWithMoveForward() {
+        for (int i = rover.getCoordinateY(); i < mars.getSizeVertical() + 1; ++i) {
+            rover.moveForward();
+        }
+        assertEquals(0,rover.getCoordinateY());
+    }
+
+    @Test
+    public void tourHorizontalMarsWhenRoversIsOverEdgeWithMoveForward() {
+        rover.turnRight();
+        for (int i = rover.getCoordinateX(); i < mars.getSizeHorizontal() + 1; ++i) {
+            rover.moveForward();
+        }
+        assertEquals(0,rover.getCoordinateX());
+    }
+
+    @Test
+    public void tourVerticalMarsWhenRoversIsOverEdgeWithMoveBackward() {
+        for (int i = mars.getSizeVertical() - rover.getCoordinateY(); i > -1; --i) {
+            rover.moveBackward();
+        }
+        assertEquals(mars.getSizeVertical(), rover.getCoordinateY());
+    }
+
+    @Test
+    public void tourHorizontalMarsWhenRoversIsOverEdgeWithMoveBackward() {
+        rover.turnRight();
+        for (int i = mars.getSizeHorizontal() - rover.getCoordinateX(); i > -1; --i) {
+            rover.moveBackward();
+        }
+        assertEquals(mars.getSizeHorizontal(), rover.getCoordinateX());
+    }
 }

@@ -6,13 +6,13 @@ import marsrover.error.EnumError;
 
 public class Rover {
 
-    private Mars planet;
+    private Mars mars;
     private int coordinateX;
     private int coordinateY;
     private Direction roverDirection;
 
     public Rover(Mars planet, int coordinateX, int coordinateY, Direction roverDirection) {
-        this.planet = planet;
+        this.mars = planet;
         this.coordinateX = coordinateX;
         this.coordinateY = coordinateY;
         this.roverDirection = roverDirection;
@@ -33,11 +33,19 @@ public class Rover {
     }
 
     public void setCoordinateX(int coordinateX) {
-        this.coordinateX = coordinateX;
+        if (coordinateX > mars.getSizeHorizontal()) {
+            this.coordinateX = 0;
+        } else if (coordinateX < 0) {
+            this.coordinateX = mars.getSizeHorizontal();
+        } else this.coordinateX = coordinateX;
     }
 
     public void setCoordinateY(int coordinateY) {
-        this.coordinateY = coordinateY;
+        if (coordinateY > mars.getSizeVertical()) {
+            this.coordinateY = 0;
+        } else if (coordinateY < 0) {
+            this.coordinateY = mars.getSizeVertical();
+        } else this.coordinateY = coordinateY;
     }
 
     public void executeCommand(Command command) {
@@ -67,7 +75,7 @@ public class Rover {
     }
 
     private void validatePosition() {
-        if (coordinateX > planet.getSizeHorizontal() || coordinateY > planet.getSizeVertical()
+        if (coordinateX > mars.getSizeHorizontal() || coordinateY > mars.getSizeVertical()
                 || coordinateY < 0 || coordinateX < 0) {
             throw new IllegalArgumentException(EnumError.POSITION.getError());
         }

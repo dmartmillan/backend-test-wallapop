@@ -96,7 +96,7 @@ public class Rover {
 
     private void writeCollide(int coordinateX, int coordinateY) {
         UserInteraction.writePosition(
-                "UNABLE TO MOVE! Rover collapsed at x:" + coordinateX + " y:" + coordinateY + " facing:" +
+                "UNABLE TO MOVE! Rover collided at x:" + coordinateX + " y:" + coordinateY + " facing:" +
                         this.roverDirection.getClass().getSimpleName().toLowerCase().charAt(0));
     }
 }

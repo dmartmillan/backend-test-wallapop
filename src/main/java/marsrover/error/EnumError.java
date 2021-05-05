@@ -4,8 +4,7 @@ public enum EnumError {
     MAP_SIZE("Wrong map size."),
     POSITION("Wrong position."),
     NOT_NUMBER("Argument was not a number."),
-    BAD_FORMAT("Argument with a bad format.")
-    ;
+    BAD_FORMAT("Argument with a bad format.");
 
     private final String error;
 

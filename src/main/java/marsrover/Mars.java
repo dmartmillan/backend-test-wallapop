@@ -59,7 +59,7 @@ public class Mars {
     private void validateObstacle(Obstacle obstacle) {
         if (obstacle.getPositionX() > this.sizeHorizontal || obstacle.getPositionY() > this.sizeVertical
         || obstacle.getPositionX() < 0 || obstacle.getPositionY() < 0) {
-            throw new IllegalArgumentException(EnumError.BAD_FORMAT.getError());
+            throw new IllegalArgumentException(EnumError.POSITION.getError());
         }
     }
 }

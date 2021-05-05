@@ -57,7 +57,7 @@ public class MarsTest extends BaseTest {
     @Test
     public void createMarsWithObstaclesWithWrongValuesTest() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage(EnumError.BAD_FORMAT.getError());
+        thrown.expectMessage(EnumError.POSITION.getError());
 
         String newObstacles = "-1,1 20,0";
         Mars mars = new Mars(sizeH, sizeV, newObstacles);

@@ -1,6 +1,7 @@
 package marsrover.direction;
 
 import marsrover.Rover;
+import marsrover.interaction.EnumMessage;
 
 public interface Direction {
     Direction turnRight();

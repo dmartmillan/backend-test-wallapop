@@ -1,6 +1,7 @@
 package marsrover.direction;
 
 import marsrover.Rover;
+import marsrover.interaction.EnumMessage;
 
 public class WestDirection implements Direction{
     @Override

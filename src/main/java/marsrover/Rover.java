@@ -3,11 +3,7 @@ package marsrover;
 import marsrover.command.Command;
 import marsrover.direction.Direction;
 import marsrover.error.EnumError;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import marsrover.interaction.UserInteraction;
 
 public class Rover {
 
@@ -38,23 +34,31 @@ public class Rover {
     }
 
     public void setCoordinateX(int coordinateX) {
-        if (coordinateX > mars.getSizeHorizontal()) {
-            this.coordinateX = 0;
-        } else if (coordinateX < 0) {
-            this.coordinateX = mars.getSizeHorizontal();
-        } else this.coordinateX = coordinateX;
+        if (mars.collide(coordinateX, this.coordinateY)) {
+            this.writeCollide(coordinateX, this.coordinateY);
+        } else {
+            if (coordinateX > mars.getSizeHorizontal()) {
+                this.coordinateX = 0;
+            } else if (coordinateX < 0) {
+                this.coordinateX = mars.getSizeHorizontal();
+            } else this.coordinateX = coordinateX;
 
-        this.validatePosition();
+            this.validatePosition();
+        }
     }
 
     public void setCoordinateY(int coordinateY) {
-        if (coordinateY > mars.getSizeVertical()) {
-            this.coordinateY = 0;
-        } else if (coordinateY < 0) {
-            this.coordinateY = mars.getSizeVertical();
-        } else this.coordinateY = coordinateY;
+        if (mars.collide(this.coordinateX, coordinateY)) {
+            this.writeCollide(this.coordinateX, coordinateY);
+        } else {
+            if (coordinateY > mars.getSizeVertical()) {
+                this.coordinateY = 0;
+            } else if (coordinateY < 0) {
+                this.coordinateY = mars.getSizeVertical();
+            } else this.coordinateY = coordinateY;
 
-        this.validatePosition();
+            this.validatePosition();
+        }
     }
 
     public void executeCommand(Command command) {
@@ -88,5 +92,11 @@ public class Rover {
                 || coordinateY < 0 || coordinateX < 0) {
             throw new IllegalArgumentException(EnumError.POSITION.getError());
         }
+    }
+
+    private void writeCollide(int coordinateX, int coordinateY) {
+        UserInteraction.writePosition(
+                "UNABLE TO MOVE! Rover collapsed at x:" + coordinateX + " y:" + coordinateY + " facing:" +
+                        this.roverDirection.getClass().getSimpleName().toLowerCase().charAt(0));
     }
 }

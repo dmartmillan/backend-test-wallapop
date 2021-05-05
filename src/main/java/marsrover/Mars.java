@@ -36,6 +36,11 @@ public class Mars {
         return this.obstacles;
     }
 
+    public boolean collide(int posRoverX, int posRoverY) {
+        return this.obstacles.stream().anyMatch(obstacle ->
+                obstacle.getPositionY() == posRoverY && obstacle.getPositionX() == posRoverX);
+    }
+
     private void createObstaclesList(String listObstacles) {
         String[] obstacles = listObstacles.split(" ");
         Pattern pattern = Pattern.compile("-?\\d+");

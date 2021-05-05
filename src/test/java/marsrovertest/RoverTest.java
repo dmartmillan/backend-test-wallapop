@@ -10,6 +10,9 @@ import marsrover.error.EnumError;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -17,12 +20,16 @@ public class RoverTest extends BaseTest {
 
     public Mars mars;
     public Rover rover;
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
 
     @Before
     public void setUp() {
         mars = new Mars(sizeH, sizeV, obstacles);
         direction = new NorthDirection();
         rover = new Rover(mars, coordinateX, coordinateY, direction);
+        System.setOut(new PrintStream(outputStreamCaptor));
     }
 
     @Test
@@ -122,5 +129,21 @@ public class RoverTest extends BaseTest {
             rover.moveBackward();
         }
         assertEquals(mars.getSizeHorizontal(), rover.getCoordinateX());
+    }
+
+    @Test
+    public void roveCollapseWithObstacleTest() {
+        String newObstacles = "2,2 5,6 6,6";
+        Mars newMars = new Mars(sizeH, sizeV, newObstacles);
+        direction = new NorthDirection();
+        rover = new Rover(newMars, coordinateX, coordinateY, direction);
+        rover.moveForward();
+        assertEquals(coordinateX, rover.getCoordinateX());
+        assertEquals(coordinateY, rover.getCoordinateY());
+
+        assertEquals("UNABLE TO MOVE! Rover collided at x:" + rover.getCoordinateX() + " y:"
+                + (rover.getCoordinateY() + 1) + " facing:"
+                + rover.getRoverDirection().getClass().getSimpleName().toLowerCase().charAt(0), outputStreamCaptor.toString()
+                .trim());
     }
 }

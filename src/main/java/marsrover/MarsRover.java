@@ -9,12 +9,13 @@ import marsrover.interaction.UserInteraction;
 
 public class MarsRover {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         int sizeH = UserInteraction.readNumber(EnumMessage.HORIZONTAL_SIZE.getMessage());
         int sizeV = UserInteraction.readNumber(EnumMessage.VERTICAL_SIZE.getMessage());
+        String obstaclesList = UserInteraction.readText(EnumMessage.OBSTACLES.getMessage());
 
-        Mars mars = new Mars(sizeH, sizeV);
+        Mars mars = new Mars(sizeH, sizeV, obstaclesList);
 
         int roverX = UserInteraction.readNumber(EnumMessage.POSITION_X.getMessage());
         int roverY = UserInteraction.readNumber(EnumMessage.POSITION_Y.getMessage());

@@ -12,7 +12,8 @@ public class UserInteraction {
 
     public static String readText(String message) {
         if (message != null && !message.equals("")) System.out.println(message);
-        return reader.next(); //n = north, e = east, w = west, s = south
+        reader.useDelimiter("\n");
+        return reader.next();
     }
 
     public static void writePosition(String position) {

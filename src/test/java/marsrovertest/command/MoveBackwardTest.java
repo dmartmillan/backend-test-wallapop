@@ -17,7 +17,7 @@ public class MoveBackwardTest extends BaseTest {
 
     @Before
     public void setUp() {
-        mars = new Mars(sizeH, sizeV);
+        mars = new Mars(sizeH, sizeV, obstacles);
         direction = new NorthDirection();
         rover = new Rover(mars, coordinateX, coordinateY, direction);
         command = new MoveBackwardCommand();

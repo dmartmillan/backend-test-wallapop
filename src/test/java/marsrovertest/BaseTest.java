@@ -9,6 +9,7 @@ import org.junit.rules.ExpectedException;
 public class BaseTest {
     protected int sizeH = 10;
     protected int sizeV = 10;
+    protected String obstacles = "";
     protected int coordinateX = 5;
     protected int coordinateY = 5;
     protected Direction direction;

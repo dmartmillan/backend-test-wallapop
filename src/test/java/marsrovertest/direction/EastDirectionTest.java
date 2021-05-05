@@ -18,7 +18,7 @@ public class EastDirectionTest extends BaseTest {
 
     @Before
     public void setUp() {
-        mars = new Mars(sizeH, sizeV);
+        mars = new Mars(sizeH, sizeV, obstacles);
         direction = new EastDirection();
         rover = new Rover(mars, coordinateX, coordinateY, direction);
     }

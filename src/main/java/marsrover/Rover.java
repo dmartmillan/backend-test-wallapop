@@ -4,9 +4,14 @@ import marsrover.command.Command;
 import marsrover.direction.Direction;
 import marsrover.error.EnumError;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Rover {
 
-    private Mars mars;
+    private final Mars mars;
     private int coordinateX;
     private int coordinateY;
     private Direction roverDirection;
@@ -38,6 +43,8 @@ public class Rover {
         } else if (coordinateX < 0) {
             this.coordinateX = mars.getSizeHorizontal();
         } else this.coordinateX = coordinateX;
+
+        this.validatePosition();
     }
 
     public void setCoordinateY(int coordinateY) {
@@ -46,6 +53,8 @@ public class Rover {
         } else if (coordinateY < 0) {
             this.coordinateY = mars.getSizeVertical();
         } else this.coordinateY = coordinateY;
+
+        this.validatePosition();
     }
 
     public void executeCommand(Command command) {
